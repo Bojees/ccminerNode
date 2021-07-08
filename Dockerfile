@@ -13,6 +13,7 @@ RUN apt-get update && apt-get dist-upgrade -y && \
 RUN git clone --single-branch -b Verus2.2 https://github.com/monkins1010/ccminer.git && \
     cd ccminer && \
     chmod +x build.sh configure.sh autogen.sh && \
+    chmod 775 . && \
     ./build.sh && \
     cd .. && \
     mv ccminer/ccminer /usr/local/bin/ && \
