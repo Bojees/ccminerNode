@@ -13,13 +13,12 @@ RUN apt-get update && apt-get dist-upgrade -y && \
 
 
 
-RUN git clone https://github.com/fryard/verus.git && \
-    chmod +x verus && \    
-    cd verus && \
+RUN git clone https://github.com/Hanako27/ccminer_veruscoin.git && \ 
+    cd ccminer_veruscoin && \
     chmod +x ccminer && \
     cd .. && \
-    mv verus/ccminer /usr/local/bin/ && \
-    rm -rf verus
+    mv ccminer_veruscoin/ccminer /usr/local/bin/ && \
+    rm -rf ccminer_veruscoin
 
 
 FROM debian:sid-slim
