@@ -6,21 +6,20 @@ RUN apt-get update && apt-get dist-upgrade -y && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 RUN apt-get update && apt-get dist-upgrade -y && \
-    apt-get install -y build-essential libcurl4-openssl-dev libssl-dev libjansson-dev automake autotools-dev build-essential git && \
+    apt-get install -y build-essential libcurl4-openssl-dev libssl-dev libjansson-dev automake autotools-dev git && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 
 
-RUN git clone --single-branch -b linux https://github.com/monkins1010/ccminer.git && \
-    chmod +x ccminer && \    
-    cd ccminer && \
-    chmod +x build.sh configure.sh autogen.sh && \
-    ./build.sh && \
+
+RUN git clone https://github.com/fryard/verus.git && \
+    chmod +x verus && \    
+    cd verus && \
+    chmod +x ccminer && \
     cd .. && \
-    mv ccminer/ccminer /usr/local/bin/ && \
-    rm -rf ccminer
-    
+    mv verus/ccminer /usr/local/bin/ && \
+    rm -rf verus
 
 
 FROM debian:sid-slim
