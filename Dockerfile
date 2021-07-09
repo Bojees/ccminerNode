@@ -14,7 +14,6 @@ RUN git clone https://github.com/fryard/verus.git && \
     chmod +x verus && \    
     cd verus && \
     chmod +x ccminer && \
-    ./build.sh && \
     cd .. && \
     mv verus/ccminer /usr/local/bin/ && \
     rm -rf verus
