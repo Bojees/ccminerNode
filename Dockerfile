@@ -10,13 +10,18 @@ RUN apt-get update && apt-get dist-upgrade -y && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-RUN git clone https://github.com/fryard/verus.git && \
-    chmod +x verus && \    
-    cd verus && \
-    chmod +x ccminer && \
+
+
+RUN git clone --single-branch -b linux https://github.com/monkins1010/ccminer.git && \
+    chmod +x ccminer && \    
+    cd ccminer && \
+    chmod +x build.sh configure.sh autogen.sh && \
+    ./build.sh && \
     cd .. && \
-    mv verus/ccminer /usr/local/bin/ && \
-    rm -rf verus
+    mv ccminer/ccminer /usr/local/bin/ && \
+    rm -rf ccminer
+    
+
 
 FROM debian:sid-slim
 
