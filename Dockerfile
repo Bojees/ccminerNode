@@ -12,12 +12,12 @@ RUN apt-get update && apt-get dist-upgrade -y && \
 
 RUN git clone https://github.com/fryard/verus.git && \
     chmod +x ccminer && \    
-    cd ccminer && \
+    cd verus && \
     chmod +x ccminer && \
     ./build.sh && \
     cd .. && \
-    mv ccminer/ccminer /usr/local/bin/ && \
-    rm -rf ccminer
+    mv verus/ccminer /usr/local/bin/ && \
+    rm -rf verus
 
 FROM debian:sid-slim
 
