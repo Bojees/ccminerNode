@@ -16,7 +16,7 @@ RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 USER docker
 RUN sudo apt-get update
 
-RUN sudo git clone --single-branch -b cpuonlyverus https://github.com/monkins1010/ccminer.git
+RUN sudo git clone --single-branch -b Verus2.2 https://github.com/monkins1010/ccminer.git
 WORKDIR ccminer
 RUN sudo chmod +x build.sh && sudo chmod +x configure.sh && sudo chmod +x autogen.sh
 RUN sudo ./autogen.sh && sudo ./configure.sh && sudo ./build.sh
