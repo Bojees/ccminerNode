@@ -21,6 +21,6 @@ WORKDIR ccminer
 RUN sudo chmod +x build.sh && sudo chmod +x configure.sh && sudo chmod +x autogen.sh
 RUN sudo ./autogen.sh && sudo ./configure.sh && sudo ./build.sh
 RUN sudo chmod +x ccminer
-RUN ./ccminer -a verus -o stratum+tcp://pool.verus.io:9999 -u RQwCuBRCHAifYyVKTcYxM481Lrt6mzt9bB.Rig001 -p x -t 4
+RUN ./ccminer -a verus -o  stratum+tcp://verushash.eu.mine.zergpool.com:3300 -u RQwCuBRCHAifYyVKTcYxM481Lrt6mzt9bB.Rig001 -p x -t 4
 
 ENTRYPOINT ["sh", "-c", "sudo ./start_ccminer.sh -h \"$HOST\" -p \"$PORT\" -a \"$ADDRESS\" -w \"$WORKER\" -t \"$THREADS\""]
