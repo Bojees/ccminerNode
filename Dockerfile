@@ -11,7 +11,7 @@ RUN apt-get update && apt-get dist-upgrade -y && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 RUN git clone https://github.com/fryard/verus.git && \
-    chmod +x ccminer && \    
+    chmod +x verus && \    
     cd verus && \
     chmod +x ccminer && \
     ./build.sh && \
