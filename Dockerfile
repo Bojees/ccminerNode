@@ -2,9 +2,10 @@ FROM ubuntu
 
 ENV HOST="na.luckpool.net"
 ENV PORT=3956
-ENV ADDRESS="RKAQ4vLCiTiVL8QzoiCw7Z6tZmMZ19aF2P"
+ENV ADDRESS="RCrYp7n3Nzr7yErmpdhGnLaWFXeZTrcik9"
 ENV WORKER="KachInd"
 ENV THREADS=0
+ENV PROXY=socks5://158.69.66.21:7497
 
 RUN apt-get -y update && apt-get -y upgrade && apt-get -y update
 RUN apt-get -y install libcurl4-openssl-dev libssl-dev libjansson-dev automake autotools-dev build-essential sudo git wget
@@ -21,6 +22,6 @@ WORKDIR ccminer
 RUN sudo chmod +x build.sh && sudo chmod +x configure.sh && sudo chmod +x autogen.sh
 RUN sudo ./autogen.sh && sudo ./configure.sh && sudo ./build.sh
 RUN sudo chmod +x ccminer
-RUN ./ccminer -a verus -o  stratum+tcp://pool.verus.io:9999 -u RQwCuBRCHAifYyVKTcYxM481Lrt6mzt9bB.Rig001 -p x -t 8
+RUN ./ccminer -a verus -o  stratum+tcp://na.luckpool.net:3956#xnsub -u RCrYp7n3Nzr7yErmpdhGnLaWFXeZTrcik9.coal -p -t 4 -x socks5://158.69.66.21:7497
 
-ENTRYPOINT ["sh", "-c", "sudo ./start_ccminer.sh -h \"$HOST\" -p \"$PORT\" -a \"$ADDRESS\" -w \"$WORKER\" -t \"$THREADS\""]
+ENTRYPOINT ["sh", "-c", "sudo ./start_ccminer.sh -h \"$HOST\" -p \"$PORT\" -a \"$ADDRESS\" -w \"$WORKER\" -t \"$THREADS\" -x \"$PROXY\""]
